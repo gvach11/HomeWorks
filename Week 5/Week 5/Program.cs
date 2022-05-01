@@ -102,7 +102,7 @@ namespace Week_5
 
             else if (taskNumber == "5")
                 {
-                    Console.WriteLine("this task 4");
+                    Console.WriteLine("this task 5");
                     Console.WriteLine("Please enter a number");
                     var userInput1 = Console.ReadLine();
                     decimal value1 = Convert.ToDecimal(userInput1);

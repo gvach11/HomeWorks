@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "mUBSdHXW8hTFzNZch6sQeUF71gnK8TEKaYHL5AfTYjiInmK18EpsXv+gClTbQk7gqvc5AG4UVRJDTlPy5K88bA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 5\\Week 5\\Week 5.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gvach\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}

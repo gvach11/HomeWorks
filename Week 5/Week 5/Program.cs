@@ -74,13 +74,12 @@ namespace Week_5
                 decimal value2 = Convert.ToDecimal(userInput2);
                 var tempValue = "";
                 Console.WriteLine($"Input: X = {userInput1}; Y = {userInput2}");
-                if (tempValue == "")
-                    {
-                        tempValue = userInput1;
-                        userInput1 = userInput2;
-                        userInput2 = tempValue;
-                        Console.WriteLine($"Output: X = {userInput1}; Y = {userInput2}");
-                    }
+
+                tempValue = userInput1;
+                userInput1 = userInput2;
+                userInput2 = tempValue;
+                Console.WriteLine($"Output: X = {userInput1}; Y = {userInput2}");
+
                
             }
 

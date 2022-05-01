@@ -9,7 +9,7 @@ namespace Week_5
             while (true) { 
             //Task Chooser
 
-            Console.WriteLine("Please select a task from 1 to 4, or type 0 to exit");
+            Console.WriteLine("Please select a task from 1 to 5, or type 0 to exit");
             var taskNumber = Console.ReadLine();
 
 
@@ -72,8 +72,16 @@ namespace Week_5
                 Console.WriteLine("Please enter Y");
                 var userInput2 = Console.ReadLine();
                 decimal value2 = Convert.ToDecimal(userInput2);
+                var tempValue = "";
                 Console.WriteLine($"Input: X = {userInput1}; Y = {userInput2}");
-                Console.WriteLine($"Output: X = {value2}; Y = {value1}");
+                if (tempValue == "")
+                    {
+                        tempValue = userInput1;
+                        userInput1 = userInput2;
+                        userInput2 = tempValue;
+                        Console.WriteLine($"Output: X = {userInput1}; Y = {userInput2}");
+                    }
+               
             }
 
             //task 4
@@ -84,13 +92,32 @@ namespace Week_5
                 var userInput1 = Console.ReadLine();
                 decimal value1 = Convert.ToDecimal(userInput1);
                 int multiplier = 0;
-                foreach (var i in "1234567890") 
+                for(int i = 0; i < 10; i++)
                 {
                     multiplier += 1;
                     Console.WriteLine($"{value1} * {multiplier} = {value1 * multiplier}");
                 }
             }
 
+            //task 5
+
+            else if (taskNumber == "5")
+                {
+                    Console.WriteLine("this task 4");
+                    Console.WriteLine("Please enter a number");
+                    var userInput1 = Console.ReadLine();
+                    decimal value1 = Convert.ToDecimal(userInput1);
+                    for (int i = 1; i < value1; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            Console.WriteLine($"{i * i}");
+                        }
+                    }
+                }
+
+
+            //exit
              else if (taskNumber == "0")
                 {
                     break;

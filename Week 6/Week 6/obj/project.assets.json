@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 5\\Week 5\\Week 5.csproj",
-      "projectName": "Week 5",
-      "projectPath": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 5\\Week 5\\Week 5.csproj",
+      "projectUniqueName": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 6\\Week 6\\Week 6.csproj",
+      "projectName": "Week 6",
+      "projectPath": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 6\\Week 6\\Week 6.csproj",
       "packagesPath": "C:\\Users\\gvach\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 5\\Week 5\\obj\\",
+      "outputPath": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 6\\Week 6\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gvach\\AppData\\Roaming\\NuGet\\NuGet.Config",

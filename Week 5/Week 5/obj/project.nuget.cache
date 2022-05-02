@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mUBSdHXW8hTFzNZch6sQeUF71gnK8TEKaYHL5AfTYjiInmK18EpsXv+gClTbQk7gqvc5AG4UVRJDTlPy5K88bA==",
+  "dgSpecHash": "6jsN6D5n4sDv6Mh5Tel1vu4cB2iJG2WVkLh9hmAW/x7xAXOs16lSlNoMpvTtpRCk2cz+mCdvKWT7kYXCcTuo4g==",
   "success": true,
   "projectFilePath": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 5\\Week 5\\Week 5.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\gvach\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

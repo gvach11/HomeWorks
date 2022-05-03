@@ -13,7 +13,7 @@ namespace Week_6
                 Console.WriteLine("Please select a task from 1 to 3, or type 0 to exit");
                 var taskNumber = Console.ReadLine();
 
-                // Task 1
+                //task 1
 
                 if (taskNumber == "1") {
 
@@ -83,6 +83,51 @@ namespace Week_6
                     Console.WriteLine("");
 
                 }
+
+                //task 2
+                if (taskNumber == "2")
+                {
+                    Console.WriteLine("This is task 2");
+                    Console.WriteLine("Please enter array length");
+                    var inputArrayLength = Convert.ToInt32(Console.ReadLine());
+                    var inputArray = new int[inputArrayLength];
+                    for (int i = 0; i < inputArrayLength; i++)
+                    {
+                        Console.WriteLine("Please enter array elements");
+                        inputArray[i] = Convert.ToInt32(Console.ReadLine());
+                    }
+                    var freq = from i in inputArray   //ეს რა პრინციპით მოქმედებს ვერ მივხვდი
+                               group i by i into x
+                               select x;
+                    foreach (var element in freq) 
+                    {
+                        Console.WriteLine($"{element.Key} appears {element.Count()} times, sum is {element.Key * element.Count()}"); 
+                    }
+                    
+
+
+                }
+
+                //task 3
+                if (taskNumber == "3")
+                {
+                    Console.WriteLine("This is task 3");
+                    Console.WriteLine("Please enter how many final elements you wish to see");
+                    var numOfElements = Convert.ToInt32(Console.ReadLine());
+                    var task3Array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                    var result = task3Array.Skip(task3Array.Length - numOfElements);
+                    Console.Write($"The last {numOfElements} elements are: ");
+                    foreach (var x in result)
+                    {
+                        Console.Write($"{x} ");
+                    }
+                    Console.WriteLine("");
+                }
+
+                //exit
+                if (taskNumber == "0") { break; }
+
+
         }
     }
     }

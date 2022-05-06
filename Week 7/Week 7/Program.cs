@@ -58,6 +58,51 @@ namespace Week_7
 
                 }
 
+                //task 3
+
+                if (taskNumber == "3")
+                {
+                    Console.WriteLine("This is task 3");
+                    var teamResults = new int[3];
+                    int count = 0;
+                    int totalScore = 0;
+                    for (int i = 0; i < teamResults.Length; i++)
+                    {
+                        count+=1;
+                        if (count == 1)
+                        {
+                            Console.WriteLine("Please enter the number of wins");
+                            var winInput = Console.ReadLine();
+                            bool winInputCheck = int.TryParse(winInput, out teamResults[i]);
+                            if (winInputCheck is false) { Console.WriteLine("Please enter a whole number");
+                                break;
+                            }
+                            totalScore += teamResults[i] * 3;
+                        }
+                        if (count == 2)
+                        {
+                            Console.WriteLine("Please enter the number of draws");
+                            var drawInput = Console.ReadLine();
+                            bool drawInputCheck = int.TryParse(drawInput, out teamResults[i]);
+                            if (drawInputCheck is false) { Console.WriteLine("Please enter a whole number");
+                                break;
+                            }
+                            totalScore += teamResults[i] * 1;
+                        }
+                        if (count == 3)
+                        {
+                            Console.WriteLine("Please enter the number of losses");
+                            var lossInput = Console.ReadLine();
+                            bool lossInputCheck = int.TryParse(lossInput, out teamResults[i]);
+                            if (lossInputCheck is false) { Console.WriteLine("Please enter a whole number");
+                                break;
+                            }
+                            Console.WriteLine($"Teams total points are {totalScore}");
+                        }
+                    }
+                    
+                }
+
 
 
 

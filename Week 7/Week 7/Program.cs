@@ -7,26 +7,40 @@ namespace Week_7
     {
         static void Main(string[] args)
         {
-        var arr = new int[] {3,5,67,8,3,34,15 };
-            for (int i = 1; i < arr.Length; i++)
+            while (true)
             {
+                //task chooser
 
-                int temp = arr[i];
-                int J = i - 1;
-                while (J >= 0 && arr[J]>temp)
+                Console.WriteLine("Please select a task from 1 to 3, or type 0 to exit");
+                var taskNumber = Console.ReadLine();
+
+                //task 1
+
+                if (taskNumber == "1")
                 {
-                    arr[J + 1] = arr[J];
-                    J =J-1;
+                    Console.WriteLine("This is task 1");
+                    Console.WriteLine("Please enter the radius of the circle");
+                    var rinput = Console.ReadLine();
+                    decimal r;
+                    bool rcheck = decimal.TryParse(rinput, out r);
+                    if (rcheck is true) {
+
+                        decimal smallArea = r * r / 2;
+                        decimal largeArea = r * r;
+                        Console.WriteLine(largeArea - smallArea);
+
+                    }
+                    else { Console.WriteLine("Please input a whole number");}
                     
-                    arr[J + 1] = temp;
                 }
-                
-                Console.WriteLine(arr[i]);
-                
+
+
+
+
+
+
 
             }
-
-
         }
     }
 }

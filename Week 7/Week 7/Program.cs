@@ -146,6 +146,41 @@ namespace Week_7
                     if (dayInputCheck is true) { Console.WriteLine($"Total Pay is {totalPay}"); }
                 }
 
+                //task 5
+
+                if (taskNumber == "5")
+                {
+                    Console.WriteLine("This is task 5");
+                    Console.WriteLine("Please enter the number of days");
+                    var arraySizeInput = Console.ReadLine();
+                    int arraySize;
+                    bool arraySizeCheck = int.TryParse(arraySizeInput, out arraySize);
+                    int progressDays = 0;
+                    if (arraySizeCheck is true)
+                    {
+                        bool distanceCheck = true;
+                        var daysArray= new int[arraySize];
+                        for (int i = 0; i < daysArray.Length; i++)
+                        {
+                            Console.WriteLine($"Enter distance for day {i+1}");
+                            var distanceInput = Console.ReadLine();
+                            distanceCheck = int.TryParse(distanceInput, out daysArray[i]);
+                            if (distanceCheck is false)
+                            {
+                                Console.WriteLine("Please enter a whole number");
+                                break;
+                            }
+                        }
+                        for (int i = 1 ; i < daysArray.Length; i++) {
+                            if (daysArray[i] > daysArray[i - 1]) { progressDays++; }
+
+                        }
+                        if (distanceCheck is true)
+                            Console.WriteLine($"Total progress days: {progressDays}");
+                    }
+                    else { Console.WriteLine("Please enter a whole number"); }
+                    }
+
 
 
 

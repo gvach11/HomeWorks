@@ -11,7 +11,7 @@ namespace Week_7
             {
                 //task chooser
 
-                Console.WriteLine("Please select a task from 1 to 3, or type 0 to exit");
+                Console.WriteLine("Please select a task from 1 to 6, or type 0 to exit");
                 var taskNumber = Console.ReadLine();
 
                 //task 1
@@ -103,7 +103,48 @@ namespace Week_7
                     
                 }
 
+                //task 4
 
+                if (taskNumber == "4")
+                {
+                    Console.WriteLine("This is task 4");
+                    var weekArray = new int[7];
+                    int totalPay = 0;
+                    bool dayInputCheck = true;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Console.WriteLine($"Please enter hours worked on day {i+1}");
+                        var dayInput = Console.ReadLine();
+                        dayInputCheck = int.TryParse(dayInput, out weekArray[i]);
+                        if (dayInputCheck is false)
+                        {
+                            Console.WriteLine("Please enter a whole number");
+                            break;
+                        }
+                        if (weekArray[i] <= 8) { totalPay += weekArray[i] * 10; }
+                        if (weekArray[i] > 8) { totalPay += 80 + ((weekArray[i] - 8) * 15); }
+                    }
+                    if (dayInputCheck is true) { 
+                        for (int i = 5; i < 7; i++)
+                        {
+                            Console.WriteLine($"Please enter hours worked on day {i + 1}");
+                            var dayInput = Console.ReadLine();
+                            dayInputCheck = int.TryParse(dayInput, out weekArray[i]);
+                            if (dayInputCheck is false)
+                            {
+                                Console.WriteLine("Please enter a whole number");
+                                break;
+                            }
+                            if (weekArray[i] <= 8) { totalPay += weekArray[i] * 20; }
+                            if (weekArray[i] > 8) { totalPay += 160 + ((weekArray[i] - 8) * 30); }
+                            
+                        }
+
+                        
+
+                    }
+                    if (dayInputCheck is true) { Console.WriteLine($"Total Pay is {totalPay}"); }
+                }
 
 
 

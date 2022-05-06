@@ -27,7 +27,7 @@ namespace Week_7
 
                         decimal smallArea = r * r / 2;
                         decimal largeArea = r * r;
-                        Console.WriteLine(largeArea - smallArea);
+                        Console.WriteLine($"Difference between the areas is {largeArea - smallArea}");
 
                     }
                     else { Console.WriteLine("Please input a whole number");}
@@ -180,6 +180,47 @@ namespace Week_7
                     }
                     else { Console.WriteLine("Please enter a whole number"); }
                     }
+
+                //task 6
+
+                if (taskNumber == "6")
+                {
+                    Console.WriteLine("This is task 6");
+                    Console.WriteLine("Please enter array size");
+                    var arraySizeInput = Console.ReadLine();
+                    int arraySize;
+                    bool arraySizeCheck = int.TryParse(arraySizeInput, out arraySize);
+                    if (arraySizeCheck is true)
+                    {
+                        var task6Array = new string[arraySize];
+                        for (int i = 0; i < task6Array.Length; i++)
+                        {
+                            Console.WriteLine($"Please enter element #{i + 1}");
+                            task6Array[i] = Console.ReadLine();
+                        }
+                        Console.WriteLine("Please enter the number of letters");
+                        int numOfLetters;
+                        bool numOfLettersCheck = int.TryParse(Console.ReadLine(), out numOfLetters);
+                        if (numOfLettersCheck is true)
+                        {
+                            var output = from x in task6Array
+                                              where x.Length == numOfLetters
+                                              select x;
+                            Console.Write($"Words consisting of {numOfLetters} letters are: ");
+                            foreach (var x in output) { Console.Write($"{x} "); }
+                            Console.WriteLine("");
+                                              
+                        }
+                        else { Console.WriteLine("Please input a whole number"); }
+
+                    }
+                    else { Console.WriteLine("Please input a whole number"); }
+
+                }
+
+                //exit
+
+                if (taskNumber == "0") { break; }
 
 
 

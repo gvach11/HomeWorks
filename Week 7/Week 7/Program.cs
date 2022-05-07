@@ -24,9 +24,9 @@ namespace Week_7
                     decimal r;
                     bool rcheck = decimal.TryParse(rinput, out r);
                     if (rcheck is true) {
-
-                        decimal smallArea = r * r / 2;
-                        decimal largeArea = r * r;
+                        decimal D = 2*r;
+                        decimal smallArea = D * D / 2;
+                        decimal largeArea = D * D;
                         Console.WriteLine($"Difference between the areas is {largeArea - smallArea}");
 
                     }

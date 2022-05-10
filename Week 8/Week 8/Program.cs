@@ -48,7 +48,8 @@ namespace Week_8
             }
             if (taskInput == "4")
             {
-
+                var stringlist = new string[2] {"S", "d"};
+                Console.WriteLine(Task4(stringlist));
             }
             if (taskInput == "5")
             {
@@ -133,9 +134,11 @@ namespace Week_8
             return endResult;
             }
 
-        static T Task4 <T>(string key, T value)
+        static T Task4 <T>(T value)
         {
+            
             return value;
+            
         }
 
         static void Task5(int a)

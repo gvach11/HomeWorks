@@ -18,8 +18,9 @@ namespace Week_8
                 if (taskNumber == "0") { break; }
             }
         }
-            static void TaskChooser(string taskInput)
-            {
+        static void TaskChooser(string taskInput)
+        {
+
             if (taskInput == "1")
             {
                 Console.WriteLine("Please enter a");
@@ -49,47 +50,54 @@ namespace Week_8
             {
 
             }
-
-            }
-
-            static int Task1(int a, int b, double n)
+            if (taskInput == "5")
             {
-                int count = 0;
-                int result = 0;
-                while (Math.Pow(count, n) <= b)
-                {
-
-                    if (Math.Pow(count, n) >= a)
-                    {
-                        result++;
-                    };
-                    count++;
-
-
-
-                }
-                return result;
-
-
+                Console.WriteLine("Enter a number");
+                int num = Convert.ToInt32(Console.ReadLine());
+                Task5(num);
             }
+        }
 
-            static int Task2(string a)
+               
+
+        static int Task1(int a, int b, double n)
+        {
+            int count = 0;
+            int result = 0;
+            while (Math.Pow(count, n) <= b)
             {
 
-                var pairCheck = from x in a
-                                group x by x into y
-                                select y.Count();
-                var result = 0;
-                foreach (var x in pairCheck) 
+                if (Math.Pow(count, n) >= a)
                 {
-                    result += x / 2;
+                    result++;
+                };
+                count++;
+
+
+
+            }
+            return result;
+
+
+        }
+
+        static int Task2(string a)
+        {
+
+            var pairCheck = from x in a
+                            group x by x into y
+                            select y.Count();
+            var result = 0;
+            foreach (var x in pairCheck) 
+            {
+                result += x / 2;
                     
-                }
-                return result;
             }
+            return result;
+        }
 
-            static string Task3(string a, string b)
-            {
+        static string Task3(string a, string b)
+        {
             string result = "";
             if (a.Length > b.Length){
                 for (int i = 0; i < b.Length; i++)
@@ -124,7 +132,27 @@ namespace Week_8
 
             return endResult;
             }
-        
+
+        static T Task4 <T>(string key, T value)
+        {
+            return value;
+        }
+
+        static void Task5(int a)
+        {
+            string converted = Convert.ToString(a);
+            Console.Write(converted.Substring(0,1));
+            converted = converted.Substring(1, converted.Length-1);
+            if (converted.Length > 0)
+            {
+                int reconverted = Convert.ToInt32(converted);
+                Task5(reconverted);
+            }
+            else { Console.WriteLine("\n"); }
+
+
+
+        }      
     }
 }
 

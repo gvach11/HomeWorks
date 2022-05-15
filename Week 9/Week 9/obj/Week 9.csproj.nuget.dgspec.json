@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 9\\Week 9\\Week 9.csproj": {}
+    "C:\\Users\\User\\Desktop\\HomeWorks\\Week 9\\Week 9\\Week 9.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 9\\Week 9\\Week 9.csproj": {
+    "C:\\Users\\User\\Desktop\\HomeWorks\\Week 9\\Week 9\\Week 9.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 9\\Week 9\\Week 9.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\HomeWorks\\Week 9\\Week 9\\Week 9.csproj",
         "projectName": "Week 9",
-        "projectPath": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 9\\Week 9\\Week 9.csproj",
-        "packagesPath": "C:\\Users\\gvach\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gvach\\Desktop\\HomeWorks\\Week 9\\Week 9\\obj\\",
+        "projectPath": "C:\\Users\\User\\Desktop\\HomeWorks\\Week 9\\Week 9\\Week 9.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\HomeWorks\\Week 9\\Week 9\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gvach\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

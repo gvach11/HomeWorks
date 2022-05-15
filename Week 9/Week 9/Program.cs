@@ -38,7 +38,16 @@ namespace Week_9
             if (input == "2")
             {
                 Student student = new Student();
-                var x =student.RandomSubject();
+                Teacher teacher = new Teacher();
+                string subjectContainer = Student.RandomSubject();
+                Console.WriteLine($"Random subject is {subjectContainer}");
+                Teacher.getResult<string>(subjectContainer);
+                Console.WriteLine("Please enter the starting year");
+                student.startYear = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine(Student.YearsToGrad(student.startYear));
+                
+                
+
             }
         }
     }
@@ -181,14 +190,46 @@ namespace Week_9
             var subjectList = new string[5] {"Math", "Chemistry", "English", "Geography", "Physics" };
             Random randnum = new Random();
             int randomSubjectIndex = randnum.Next(subjectList.Length);
-            return $"Random subject is {subjectList[randomSubjectIndex]}";
+            return subjectList[randomSubjectIndex];
         }
 
-        static string YearsToGrad(int year)
+        public static string YearsToGrad(int year)
         {
+            Student student = new Student();
             if (year < 2018) { return "Already Graduated";}
             else if (year > 2022) { return "Start date is in in the future"; }
             else { return $"Will graduate in {Convert.ToString(year+4-2022)} years"; }
+        }
+    }
+
+    public class Teacher
+    {
+        public string name { get; set; }
+        public bool isCertified { get; set; }
+
+        public static void getResult<T>( string studentData)
+        {
+            if (studentData == "Math")
+            {
+                Random r = new Random();
+                var x = r.Next(1, 100);
+                var y = r.Next(1, 100);
+                Console.WriteLine($"{x} + {y} = {x + y}");
+            }
+            else if (studentData == "Chemistry")
+            {
+                var formulaList = new string[5] { "Na2O", "H2SO4", "NaCl", "C6H12O6", "H2O" };
+                Random randnum = new Random();
+                int randomFormulaIndex = randnum.Next(formulaList.Length);
+                Console.WriteLine($"Random chemical is: {formulaList[randomFormulaIndex]}");
+            }
+
+            else if (studentData == "English")
+            {
+                Console.WriteLine("Here is some random text in English");
+            }
+
+            else { Console.WriteLine($"The teacher is not competent in {studentData}"); }
         }
     }
     

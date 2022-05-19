@@ -31,12 +31,18 @@ namespace Week_10
                 if(financechoice == "1") 
                 {
                     Bank bank = new Bank();
-                    Console.WriteLine($"History check returned {bank.CheckUserHistory()}");
-                    Console.WriteLine("Please enter the loan amount");
-                    var amount = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Please enter the number of months");
-                    var months = Convert.ToInt32(Console.ReadLine());
-                    bank.CalculateLoanPercent(amount, months);
+                    bool historyCheck = bank.CheckUserHistory();
+                    Console.WriteLine($"History check returned {historyCheck}");
+                    if (historyCheck)
+                    {
+                        Console.WriteLine("Please enter the loan amount");
+                        var amount = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Please enter the number of months");
+                        var months = Convert.ToInt32(Console.ReadLine());
+                        bank.CalculateLoanPercent(amount, months);
+
+                    }
+                    
                 }
                 else if (financechoice == "2")
                 {

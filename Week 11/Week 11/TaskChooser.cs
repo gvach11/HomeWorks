@@ -74,6 +74,12 @@ namespace Week_11
 
             if (input == "2")
             {
+                RealActor actor = new RealActor();
+                StuntDouble stuntDouble = new StuntDouble();
+                actor.act();
+                Console.WriteLine("-------");
+                stuntDouble.act();
+                Console.WriteLine("\n");
 
             }
         }

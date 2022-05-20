@@ -8,7 +8,7 @@ namespace Week_11
         {
             while (true)
             {
-                Console.WriteLine("Please enter the number of task from 1 to 2, or 0 to exit");
+                Console.WriteLine("Please enter the number of task from 1 to 3, or 0 to exit");
                 var taskNumber = Console.ReadLine();
                 if (taskNumber == "1" || taskNumber == "2" || taskNumber == "3")
                 {

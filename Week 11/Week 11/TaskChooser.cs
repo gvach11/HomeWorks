@@ -82,6 +82,15 @@ namespace Week_11
                 Console.WriteLine("\n");
 
             }
+
+            if (input == "3")
+            {
+                Facade facade = new Facade();
+                Console.WriteLine("Please select report type: [1] HTML, [2] PDF");
+                var typeInput = Console.ReadLine();
+                if (typeInput == "1") { facade.ReportHTML(); }
+                if (typeInput == "2") { facade.ReportPDF(); }
+            }
         }
     }
 }

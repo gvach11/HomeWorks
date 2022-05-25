@@ -14,12 +14,22 @@ namespace Week_12
         {
             if (input == "1")
             {
-                Console.WriteLine("Please inpu the number of lines");
+                Console.WriteLine("Please input the number of lines");
                 var lineNumber = Convert.ToInt32(Console.ReadLine());
-                Task1 fileworker = new Task1();
-                fileworker.CreateOrClear();
-                fileworker.WriteToFile(lineNumber);
+                FileInitiator fileInitiator = new FileInitiator();
+                FileWriter fileWriter = new FileWriter();
+                fileInitiator.CreateOrClear();
+                fileWriter.WriteToFile(lineNumber);
                 
+            }
+            if (input == "2")
+            {
+                Console.WriteLine("Please input a whole number");
+                var number = Convert.ToInt32(Console.ReadLine());
+                FileInitiator fileInitiator = new FileInitiator();
+                var fileWriter = new MultiplicationFileWriter();
+                fileInitiator.CreateOrClear();
+                fileWriter.WriteToFile(number);
             }
         }
     }

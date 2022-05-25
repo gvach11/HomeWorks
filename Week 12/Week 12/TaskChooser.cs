@@ -31,6 +31,29 @@ namespace Week_12
                 fileInitiator.CreateOrClear();
                 fileWriter.WriteToFile(number);
             }
+
+            if (input == "3")
+            {
+                var xmlwriter = new XMLWriter();
+                var xmlinitiator = new XMLInitiator();
+                Console.WriteLine("Please input a string");
+                var stringSplitter = new StringSplitter();
+                stringSplitter.input = Console.ReadLine();
+                Console.WriteLine("Please enter the number in which the string should be divided");
+                stringSplitter.partNumber = Convert.ToInt32(Console.ReadLine());
+                xmlinitiator.CreateOrClear();
+                xmlwriter.WriteXML(stringSplitter.SplitString(stringSplitter.input, stringSplitter.partNumber));
+
+
+            }
+            if (input == "4")
+            {
+                JSONInitiator initiator = new JSONInitiator();
+                Parser parser = new Parser();
+                initiator.CreateOrClear();
+                initiator.RandomJsonData();
+                parser.JsonParse();
+            }
         }
     }
 }

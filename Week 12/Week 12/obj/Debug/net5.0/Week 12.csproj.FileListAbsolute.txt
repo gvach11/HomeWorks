@@ -14,3 +14,5 @@ C:\Users\User\Desktop\HomeWorks\Week 12\Week 12\obj\Debug\net5.0\refint\Week 12.
 C:\Users\User\Desktop\HomeWorks\Week 12\Week 12\obj\Debug\net5.0\Week 12.pdb
 C:\Users\User\Desktop\HomeWorks\Week 12\Week 12\obj\Debug\net5.0\Week 12.genruntimeconfig.cache
 C:\Users\User\Desktop\HomeWorks\Week 12\Week 12\obj\Debug\net5.0\ref\Week 12.dll
+C:\Users\User\Desktop\HomeWorks\Week 12\Week 12\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\User\Desktop\HomeWorks\Week 12\Week 12\obj\Debug\net5.0\Week 12.csproj.CopyComplete

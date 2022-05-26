@@ -42,7 +42,7 @@ namespace Week_12
                 Console.WriteLine("Please enter the number in which the string should be divided");
                 stringSplitter.partNumber = Convert.ToInt32(Console.ReadLine());
                 xmlinitiator.CreateOrClear();
-                xmlwriter.WriteXML(stringSplitter.SplitString(stringSplitter.input, stringSplitter.partNumber));
+                xmlwriter.WriteToXML(stringSplitter.SplitString(stringSplitter.input, stringSplitter.partNumber));
 
 
             }

@@ -10,7 +10,7 @@ namespace Week_12
 {
     public class XMLInitiator
     {
-        public static string filepath = @"C:\task1.xml";
+        public static string filepath = @"C:\task3.xml";
         public void CreateOrClear()
         {
             if (!File.Exists(filepath))
@@ -21,6 +21,7 @@ namespace Week_12
             else
             {
                 File.WriteAllText(filepath, String.Empty);
+                
             }
         }
 
@@ -34,42 +35,39 @@ namespace Week_12
 
         public List<string> SplitString(string input, int partNumber)
         {
-            int partSize = input.Length/partNumber;
+            int partSize = input.Length / partNumber;
             var indexCount = 0;
             resultList = new List<string>();
-            foreach (char c in input)
+            if(input.Length%partNumber != 0)
             {
-                if (partNumber == 1)
+                Console.WriteLine($"The string can't be divided into {partNumber} equal parts.");
+            }
+            else
+            {
+                foreach (char c in input)
                 {
-                    resultList.Add(input);
-                    foreach (string s in resultList)
+                    if (partNumber == 1)
                     {
-                        Console.WriteLine(s);
+                        resultList.Add(input);
                         return resultList;
                     }
-                }
-                else if (indexCount % partSize == 0)
-                {
-                    try
+                    else if (indexCount % partSize == 0)
                     {
                         resultList.Add(input.Substring(indexCount, partSize));
                     }
-                    catch(ArgumentOutOfRangeException)
-                    {
-                        resultList.Add(input.Substring(indexCount, (partSize-1)));
-                    }
+                    indexCount++;
                 }
-                indexCount++;
-                
             }
+            
             //test
             foreach (string s in resultList)
             {
                 Console.WriteLine(s);
 
-            //test
+                //test
 
             }
+            
             return resultList;
 
         }
@@ -77,21 +75,27 @@ namespace Week_12
 
     public class XMLWriter
     {
-        public void WriteXML(List<string> input)
+        public void WriteToXML(List<string> input)
         {
-            XmlDocument xmldoc = new XmlDocument();
-            XmlNode root = xmldoc.DocumentElement;
-            xmldoc.Load(XMLInitiator.filepath);
-            var iterationCount = 1;
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<item><name>Root</name></item>");
+            XmlNode root = doc.DocumentElement;
+            XmlTextWriter writer = new XmlTextWriter(XMLInitiator.filepath, null);
+            writer.Formatting = Formatting.Indented;
+            var iterationcount = 1;
             foreach (string s in input)
             {
-                XmlElement currentelement = xmldoc.CreateElement(s);
-                currentelement.InnerText = $"String #{iterationCount}";
-                xmldoc.DocumentElement.AppendChild(currentelement);
-                iterationCount++;
+                XmlElement currentelement = doc.CreateElement(s);
+                currentelement.InnerText = $"<string{iterationcount}>";
+                root?.InsertAfter(currentelement, root.LastChild);
+                iterationcount++;
             }
-            xmldoc.Save(XMLInitiator.filepath);
+            doc.Save(writer);
+            
         }
     }
 }
+
+
+
 

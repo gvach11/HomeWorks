@@ -54,6 +54,20 @@ namespace Week_12
                 initiator.RandomJsonData();
                 parser.JsonParse();
             }
+
+            if(input == "5")
+            {
+                CaesarInitiator initiator = new CaesarInitiator();
+                CaesarParser parser = new CaesarParser();
+                CaesarCipher cipher = new CaesarCipher();
+                Console.WriteLine("Please input key");
+                var key = Convert.ToInt32(Console.ReadLine());
+                initiator.CreateOrClear();
+                string toCipher = initiator.CeasarData(key);
+                string enciphered = cipher.Encipher(toCipher, key);
+                parser.CaesarParse(enciphered);
+
+            }
         }
     }
 }

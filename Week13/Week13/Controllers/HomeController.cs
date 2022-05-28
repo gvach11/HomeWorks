@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Week13.Models;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Week13.Controllers
 {
@@ -55,9 +57,22 @@ namespace Week13.Controllers
             if (ModelState.IsValid){
                 AppointmentModel appointment = new AppointmentModel();
                 appointment.FirstName = Collection["FirstName"].ToString();
-                System.IO.File.WriteAllText(filepath, appointment.FirstName);
+                appointment.LastName = Collection["LastName"].ToString();
+                appointment.Doctor = Collection["Doctor"].ToString();
+                appointment.Time = Collection["Time"].ToString();
+                string appstring = JsonConvert.SerializeObject(appointment);
+                System.IO.File.AppendAllText(filepath, appstring+"\n");
             }
             return RedirectToAction("Appointment");
+        }
+        [HttpGet]
+        public ActionResult ViewApps()
+        {
+            string filepath = @"C:\Week13.json";
+            string readfile = System.IO.File.ReadAllText(filepath);
+            //JArray convert = JArray.Parse(readfile);
+            ViewData["responsedata"] = readfile;
+            return View();
         }
     }
 }

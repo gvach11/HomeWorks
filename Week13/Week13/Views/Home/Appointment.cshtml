@@ -49,8 +49,17 @@
                 <td></td>
                 <td><input type="submit" value="Create" class="span2 btn btn-default"/></td>
 
+
             </tr>
         </table>
     }
+</body>
+<body>
+     
+                    @using (Html.BeginForm("ViewApps", "Home", FormMethod.Get))
+                    {
+                        <td><input type="submit" value="View Appointments" class="span2 btn btn-default"/></td>
+                    }
+                
 </body>
 </html>

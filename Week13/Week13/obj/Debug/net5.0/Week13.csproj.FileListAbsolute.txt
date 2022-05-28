@@ -38,3 +38,5 @@ C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\Week13.genruntime
 C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\ref\Week13.dll
 C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\Week13.csproj.CopyComplete
 C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\Razor\Views\Home\Appointment.cshtml.g.cs
+C:\Users\User\Desktop\HomeWorks\Week13\Week13\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\Razor\Views\Home\ViewApps.cshtml.g.cs

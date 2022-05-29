@@ -13,6 +13,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Week13.Controllers
 {
+    [TypeFilter(typeof(BookingFilter))]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

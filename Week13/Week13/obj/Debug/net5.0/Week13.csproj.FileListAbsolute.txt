@@ -41,3 +41,4 @@ C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\Razor\Views\Home\
 C:\Users\User\Desktop\HomeWorks\Week13\Week13\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\Razor\Views\Home\ViewApps.cshtml.g.cs
 C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\Razor\Views\Home\BookError.cshtml.g.cs
+C:\Users\User\Desktop\HomeWorks\Week13\Week13\obj\Debug\net5.0\Razor\Views\Shared\BookingNotAllowed.cshtml.g.cs

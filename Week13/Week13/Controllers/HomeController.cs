@@ -60,8 +60,19 @@ namespace Week13.Controllers
                 appointment.LastName = Collection["LastName"].ToString();
                 appointment.Doctor = Collection["Doctor"].ToString();
                 appointment.Time = Collection["Time"].ToString();
-                string appstring = JsonConvert.SerializeObject(appointment);
-                System.IO.File.AppendAllText(filepath, appstring+"\n");
+
+                //string appstring = JsonConvert.SerializeObject(appointment);
+                //System.IO.File.AppendAllText(filepath, appstring + "\n");
+
+                if (ValidateDate((appointment.Time)))
+                {
+                    string appstring = JsonConvert.SerializeObject(appointment);
+                    System.IO.File.AppendAllText(filepath, appstring + "\n");
+                }
+                else
+                {
+                    return Json(new { status = "error", message = "Invalid Time" });
+                }
             }
             return RedirectToAction("Appointment");
         }
@@ -73,6 +84,21 @@ namespace Week13.Controllers
             //JArray convert = JArray.Parse(readfile);
             ViewData["responsedata"] = readfile;
             return View();
+        }
+
+        public bool ValidateDate(string time)
+        {
+            DateTime now = DateTime.ParseExact(time, "H:m", null);
+            DateTime start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 0, 0);
+            DateTime end = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
+            if (end.Hour >= now.Hour && now.Hour >= start.Hour)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

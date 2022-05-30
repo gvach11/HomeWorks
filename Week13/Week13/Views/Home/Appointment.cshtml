@@ -1,0 +1,65 @@
+﻿@model Week13.Models.AppointmentModel
+
+@{
+    ViewData["Title"] = "Contact Page";
+}
+ 
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Index</title>
+</head>
+<body>
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+    {
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th colspan="2" align="center">Appointment Details</th>
+            </tr>
+            <tr>
+                <td>First Name: </td>
+                <td>
+                    @Html.TextBoxFor(m => m.FirstName)
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name: </td>
+                <td>
+                    @Html.TextBoxFor(m => m.LastName)
+                </td>
+            </tr>
+            <tr>
+                <td>Doctor: </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Doctor, new List<SelectListItem>
+                   { new SelectListItem{Text="Dentist", Value="Dentist"},
+                     new SelectListItem{Text="Neurologist", Value="Neurologist"}}, "Please select")
+                </td>
+            </tr>
+            <tr>
+                <td>Time: </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Time, new {@AppointmentModel = "form control",
+                    type =  "time"})
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Create" class="span2 btn btn-default"/></td>
+
+
+            </tr>
+        </table>
+    }
+</body>
+<body>
+     
+                    @using (Html.BeginForm("ViewApps", "Home", FormMethod.Get))
+                    {
+                        <td><input type="submit" value="View Appointments" class="span2 btn btn-default"/></td>
+                    }
+                
+</body>
+</html>

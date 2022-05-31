@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace Week14.Controllers
 {
@@ -15,6 +16,27 @@ namespace Week14.Controllers
     public class PersonController : Controller
     {
         private readonly string _filePath = Directory.GetCurrentDirectory() + "\\Week14.json";
+
+        //Validator start
+        public class PersonValidator : AbstractValidator<Person>
+        {
+            public PersonValidator()
+            {
+                RuleFor(Person => Person.CreateDate.Day).LessThanOrEqualTo(DateTime.Now.Day);
+                RuleFor(Person => Person.Firstname).Length(0, 50);
+                RuleFor(Person => Person.Lastname).Length(0, 50);
+                RuleFor(Person => Person.JobPosition).Length(0, 50);
+                RuleFor(Person => Person.Salary).InclusiveBetween(0, 10000);
+                RuleFor(Person => Person.WorkExperince).NotNull();
+                RuleFor(Person => Person.PersonAddress.City).NotNull().WithMessage("City is mandatory!");
+                RuleFor(Person => Person.PersonAddress.Country).NotNull().WithMessage("Country is mandatory!");
+                RuleFor(Person => Person.PersonAddress.HomeNumber).NotNull().WithMessage("Home Number is mandatory!");
+
+
+            }
+        }
+
+        //Validator End
 
         [HttpPost ("register")]
         public IActionResult Register([FromQuery]Person person)
@@ -35,6 +57,13 @@ namespace Week14.Controllers
                 }
             };
 
+            var personValidator = new PersonValidator();
+            ValidationResult result = personValidator.Validate(newPerson);
+            if (!result.IsValid)
+            {
+                return BadRequest(result.Errors.FirstOrDefault());
+            }
+
             if (!System.IO.File.Exists(_filePath))
             {
                 var myfile = System.IO.File.Create(_filePath);
@@ -43,7 +72,8 @@ namespace Week14.Controllers
             }
             string personString = JsonConvert.SerializeObject(newPerson);
             System.IO.File.AppendAllText(_filePath, personString + "\n");
-            return Ok(person);
+            string readfile = System.IO.File.ReadAllText(_filePath);    
+            return Ok(readfile);
         }
     }
 }

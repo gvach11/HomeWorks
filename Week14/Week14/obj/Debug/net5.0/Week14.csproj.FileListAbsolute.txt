@@ -28,3 +28,4 @@ C:\Users\User\Desktop\HomeWorks\Week14\Week14\obj\Debug\net5.0\Week14.genruntime
 C:\Users\User\Desktop\HomeWorks\Week14\Week14\obj\Debug\net5.0\ref\Week14.dll
 C:\Users\User\Desktop\HomeWorks\Week14\Week14\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\User\Desktop\HomeWorks\Week14\Week14\bin\Debug\net5.0\Week14.json
+C:\Users\User\Desktop\HomeWorks\Week14\Week14\bin\Debug\net5.0\FluentValidation.dll

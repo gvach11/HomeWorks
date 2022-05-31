@@ -28,6 +28,7 @@ namespace Week14.Controllers
                 RuleFor(Person => Person.JobPosition).Length(0, 50);
                 RuleFor(Person => Person.Salary).InclusiveBetween(0, 10000);
                 RuleFor(Person => Person.WorkExperince).NotNull();
+                RuleFor(Person => Person.PersonAddress).NotNull().WithMessage("Address is mandatory!");
                 RuleFor(Person => Person.PersonAddress.City).NotNull().WithMessage("City is mandatory!");
                 RuleFor(Person => Person.PersonAddress.Country).NotNull().WithMessage("Country is mandatory!");
                 RuleFor(Person => Person.PersonAddress.HomeNumber).NotNull().WithMessage("Home Number is mandatory!");
@@ -74,6 +75,29 @@ namespace Week14.Controllers
             System.IO.File.AppendAllText(_filePath, personString + "\n");
             string readfile = System.IO.File.ReadAllText(_filePath);    
             return Ok(readfile);
+        }
+
+        [HttpGet ("getdata")]
+        public IActionResult GetData()
+        {
+            string readfile = System.IO.File.ReadAllText(_filePath);
+            return Ok(readfile);
+        }
+
+        [HttpGet ("getdata/{id}")]
+        public IActionResult GetDataById(int id)
+        {
+            try
+            {
+                string readline = System.IO.File.ReadLines(_filePath).Skip(id).Take(1).First();
+                return Ok(readline);
+            }
+            catch (System.InvalidOperationException)
+            {
+                return NotFound($"The file does not containt index#{id}");
+            }
+
+            
         }
     }
 }

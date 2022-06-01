@@ -17,6 +17,7 @@ namespace Week14.Controllers
     {
         private readonly string _filePath = Directory.GetCurrentDirectory() + "\\Week14.json";
 
+
         
 
         //Validator start
@@ -123,6 +124,38 @@ namespace Week14.Controllers
             return Ok(result);
             
 
+        }
+
+        //Delete
+
+        [HttpDelete ("delete/{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            var personList = new List<Person>();
+            var linesRead = System.IO.File.ReadLines(_filePath);
+            foreach (var line in linesRead)
+            {
+                var jsonLine = JsonConvert.DeserializeObject<Person>(line);
+                personList.Add(jsonLine);
+
+            }
+
+            try
+            {
+                personList.RemoveAt(id);
+                System.IO.File.WriteAllText(_filePath, String.Empty);
+                foreach (Person person in personList)
+                {
+                    var person2string = JsonConvert.SerializeObject(person);
+                    System.IO.File.AppendAllText(_filePath, person2string + "\n");
+                }
+                string readfile = System.IO.File.ReadAllText(_filePath);
+                return Ok(readfile);
+            }
+            catch (System.InvalidOperationException)
+            {
+                return NotFound($"The file does not containt index#{id}");
+            }
         }
     }
 }

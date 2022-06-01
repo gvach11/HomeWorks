@@ -157,5 +157,35 @@ namespace Week14.Controllers
                 return NotFound($"The file does not containt index#{id}");
             }
         }
+        [HttpPut("update/{id}")]
+        public IActionResult UpdateById(int id)
+        {
+            var personList = new List<Person>();
+            var linesRead = System.IO.File.ReadLines(_filePath);
+            foreach (var line in linesRead)
+            {
+                var jsonLine = JsonConvert.DeserializeObject<Person>(line);
+                personList.Add(jsonLine);
+
+            }
+            try
+            {
+                personList[id].Firstname = "ChangedName";
+                System.IO.File.WriteAllText(_filePath, String.Empty);
+                foreach (Person person in personList)
+                {
+                    var person2string = JsonConvert.SerializeObject(person);
+                    System.IO.File.AppendAllText(_filePath, person2string + "\n");
+                }
+                string readfile = System.IO.File.ReadAllText(_filePath);
+                return Ok(readfile);
+            }
+            catch (System.InvalidOperationException)
+            {
+                return NotFound($"The file does not containt index#{id}");
+            }
+
+        }
+
     }
 }

@@ -17,6 +17,8 @@ namespace Week14.Controllers
     {
         private readonly string _filePath = Directory.GetCurrentDirectory() + "\\Week14.json";
 
+        
+
         //Validator start
         public class PersonValidator : AbstractValidator<Person>
         {
@@ -32,13 +34,12 @@ namespace Week14.Controllers
                 RuleFor(Person => Person.PersonAddress.City).NotNull().WithMessage("City is mandatory!");
                 RuleFor(Person => Person.PersonAddress.Country).NotNull().WithMessage("Country is mandatory!");
                 RuleFor(Person => Person.PersonAddress.HomeNumber).NotNull().WithMessage("Home Number is mandatory!");
-
-
             }
         }
 
         //Validator End
 
+        //Registration
         [HttpPost ("register")]
         public IActionResult Register([FromQuery]Person person)
         {
@@ -77,6 +78,7 @@ namespace Week14.Controllers
             return Ok(readfile);
         }
 
+        //Reading the whole file
         [HttpGet ("getdata")]
         public IActionResult GetData()
         {
@@ -84,6 +86,7 @@ namespace Week14.Controllers
             return Ok(readfile);
         }
 
+        //Reading a certain line
         [HttpGet ("getdata/{id}")]
         public IActionResult GetDataById(int id)
         {
@@ -98,6 +101,28 @@ namespace Week14.Controllers
             }
 
             
+        }
+
+        //Filter
+        [HttpGet ("getdatabyparam")]
+        public IActionResult GetDataByQuery([FromQuery] Person person)
+        {
+            var personList = new List<Person>();
+            var linesRead = System.IO.File.ReadLines(_filePath);
+            foreach (var line in linesRead)
+            {
+                var jsonLine = JsonConvert.DeserializeObject<Person>(line);
+                personList.Add(jsonLine);
+
+            }
+            var result = personList.Where(x => x.Salary == person.Salary);
+            if (result.Count() == 0)
+            {
+                return Ok("No Results Found");
+            }
+            return Ok(result);
+            
+
         }
     }
 }

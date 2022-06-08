@@ -73,3 +73,52 @@ JOIN Sales.OrderDetails OD ON OD.orderid = O.orderid
 JOIN Production.Products P ON P.productid = OD.productid
 JOIN Production.Categories CA ON CA.categoryid = P.categoryid
 WHERE categoryname in ('Beverages', 'Dairy Products')
+
+
+--HARDWARE
+--1
+SELECT [Name], Price FROM Products
+WHERE ManufacturerId in (
+SELECT ManufacturerId FROM Manufacturers
+WHERE [Name] = 'Hewlett-Packard')
+
+--2
+SELECT [Name], Price FROM Products
+WHERE ManufacturerId in (
+SELECT ManufacturerId FROM Manufacturers
+WHERE [Name] not in ('Fujitsu'))
+
+--3
+SELECT [Name], Price FROM Products
+WHERE ManufacturerId in (
+SELECT ManufacturerId FROM Manufacturers
+WHERE [Name] in ('Sony', 'Fujitsu', 'IBM', 'Intel'))
+
+--4
+SELECT [Name] FROM Manufacturers
+WHERE ManufacturerId in (
+SELECT ManufacturerId FROM Products
+WHERE Price > 200)
+
+--5
+SELECT [Name], Price FROM Products
+WHERE ManufacturerId in (
+SELECT ManufacturerId FROM Manufacturers
+WHERE [Name] not in ('Genius', 'Dell'))
+
+--6
+SELECT COUNT([Name]) FROM Manufacturers
+WHERE ManufacturerId in (
+SELECT  DISTINCT ManufacturerId FROM Products
+WHERE [Name] like ('%drive%'))
+
+--7
+WITH allIntelProducts AS (
+SELECT [Name], Price FROM Products
+WHERE ManufacturerId in (
+SELECT ManufacturerId FROM Manufacturers
+WHERE [Name] in ('Intel')))
+
+SELECT COUNT([Name]) FROM allIntelProducts
+WHERE Price > (SELECT AVG(Price) FROM allIntelProducts) 
+

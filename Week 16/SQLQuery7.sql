@@ -122,3 +122,36 @@ WHERE [Name] in ('Intel')))
 SELECT COUNT([Name]) FROM allIntelProducts
 WHERE Price > (SELECT AVG(Price) FROM allIntelProducts) 
 
+--WorldEvents
+--1
+SELECT COUNT(EventId) FROM Event 
+WHERE CountryID in (
+SELECT CountryID FROM Country WHERE ContinentID in(
+SELECT ContinentID FROM Continent WHERE ContinentName in ('Europe')))
+
+--2
+SELECT MIN(EventDate) FROM Event 
+WHERE CountryID in (
+SELECT CountryID FROM Country WHERE ContinentID in(
+SELECT ContinentID FROM Continent WHERE ContinentName in ('Africa')))
+
+--3
+SELECT COUNT(CountryID) FROM Country
+WHERE ContinentID in (
+SELECT ContinentID FROM Continent WHERE ContinentName in ('South America', 'North America'))
+
+--4
+SELECT COUNT(EventID) FROM Event
+WHERE MONTH(EventDate) = 12
+AND DAY(EventDate) = 31
+AND CategoryID in (
+SELECT CategoryID FROM Category
+WHERE CategoryName in ('Economy'))
+
+--5
+SELECT MAX(EventDate) FROM Event
+WHERE CategoryID in (
+SELECT CategoryID FROM Category
+WHERE CategoryName in ('Sports'))
+
+

@@ -142,8 +142,8 @@ SELECT ContinentID FROM Continent WHERE ContinentName in ('South America', 'Nort
 
 --4
 SELECT COUNT(EventID) FROM Event
-WHERE MONTH(EventDate) = 12
-AND DAY(EventDate) = 31
+WHERE MONTH(EventDate) = 01
+AND DAY(EventDate) = 01
 AND CategoryID in (
 SELECT CategoryID FROM Category
 WHERE CategoryName in ('Economy'))

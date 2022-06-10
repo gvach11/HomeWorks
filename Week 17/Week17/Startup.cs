@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Week17.Data;
+using Newtonsoft.Json;
 
 namespace Week17
 {
@@ -41,6 +42,10 @@ namespace Week17
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Week17", Version = "v1" });
             });
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

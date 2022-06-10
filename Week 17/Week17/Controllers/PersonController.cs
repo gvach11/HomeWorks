@@ -9,18 +9,25 @@ using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
 using Week17.Domain;
-
+using Week17.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Week17.Controllers
 {
+
+
     [ApiController]
     [Route("api/[controller]")]
     public class PersonController : Controller
     {
+        private readonly PersonContext _context;
+        public PersonController(PersonContext context)
+        {
+            _context = context;
+        }
+
         private readonly string _filePath = Directory.GetCurrentDirectory() + "\\Week17.json";
 
-
-        
 
         //Validator start
         public class PersonValidator : AbstractValidator<Person>
@@ -44,49 +51,29 @@ namespace Week17.Controllers
 
         //Registration
         [HttpPost ("register")]
-        public IActionResult Register([FromQuery]Person person)
+        public async Task<ActionResult<Person>> AddPerson(Person person)
         {
-            var newPerson = new Person
-            {
-                CreateDate = DateTime.Now,
-                Firstname = person.Firstname,
-                Lastname = person.Lastname,
-                JobPosition = person.JobPosition,
-                Salary = person.Salary,
-                WorkExperince = person.WorkExperince,
-                PersonAddress = new Address
-                {
-                    City = person.PersonAddress.City,
-                    Country = person.PersonAddress.Country,
-                    HomeNumber = person.PersonAddress.HomeNumber
-                }
-            };
 
+            _context.Persons.Add(person);
+            await _context.SaveChangesAsync();
+            
             var personValidator = new PersonValidator();
-            ValidationResult result = personValidator.Validate(newPerson);
+            ValidationResult result = personValidator.Validate(person);
             if (!result.IsValid)
             {
                 return BadRequest(result.Errors.FirstOrDefault());
             }
 
-            if (!System.IO.File.Exists(_filePath))
-            {
-                var myfile = System.IO.File.Create(_filePath);
-                myfile.Close();
 
-            }
-            string personString = JsonConvert.SerializeObject(newPerson);
-            System.IO.File.AppendAllText(_filePath, personString + "\n");
-            string readfile = System.IO.File.ReadAllText(_filePath);    
-            return Ok(readfile);
+            return CreatedAtAction("GetPersons", new { id = person.Id }, person);
         }
 
         //Reading the whole file
         [HttpGet ("getdata")]
-        public IActionResult GetData()
+        public async Task<ActionResult<IEnumerable<Person>>> GetPersons()
         {
-            string readfile = System.IO.File.ReadAllText(_filePath);
-            return Ok(readfile);
+
+            return await _context.Persons.ToListAsync();
         }
 
         //Reading a certain line

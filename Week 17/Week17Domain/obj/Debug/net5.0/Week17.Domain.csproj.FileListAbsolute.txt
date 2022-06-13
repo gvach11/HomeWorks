@@ -1,0 +1,15 @@
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\bin\Debug\net5.0\Week17.Domain.deps.json
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\bin\Debug\net5.0\Week17.Domain.dll
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\bin\Debug\net5.0\Week17.Domain.pdb
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\Week17.Domain.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\Week17.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\Week17.Domain.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\Week17.Domain.AssemblyInfo.cs
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\Week17.Domain.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\Week17.Domain.dll
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\refint\Week17.Domain.dll
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\Week17.Domain.pdb
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\ref\Week17.Domain.dll
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\bin\Debug\net5.0\Week17.Domain.runtimeconfig.json
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\bin\Debug\net5.0\Week17.Domain.runtimeconfig.dev.json
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17Domain\obj\Debug\net5.0\Week17.Domain.genruntimeconfig.cache

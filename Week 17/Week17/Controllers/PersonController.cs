@@ -53,9 +53,6 @@ namespace Week17.Controllers
         [HttpPost ("register")]
         public async Task<ActionResult<Person>> AddPerson(Person person)
         {
-
-            _context.Persons.Add(person);
-            await _context.SaveChangesAsync();
             
             var personValidator = new PersonValidator();
             ValidationResult result = personValidator.Validate(person);
@@ -63,6 +60,9 @@ namespace Week17.Controllers
             {
                 return BadRequest(result.Errors.FirstOrDefault());
             }
+
+            _context.Persons.Add(person);
+            await _context.SaveChangesAsync();
 
 
             return CreatedAtAction("GetPersons", new { id = person.Id }, person);

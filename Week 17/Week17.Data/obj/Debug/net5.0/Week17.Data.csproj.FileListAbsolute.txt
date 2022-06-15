@@ -1,4 +1,6 @@
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\bin\Debug\net5.0\Week17.Data.deps.json
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\bin\Debug\net5.0\Week17.Data.runtimeconfig.json
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\bin\Debug\net5.0\Week17.Data.runtimeconfig.dev.json
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\bin\Debug\net5.0\Week17.Data.dll
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\bin\Debug\net5.0\Week17.Data.pdb
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\bin\Debug\net5.0\Week17.Domain.dll
@@ -12,7 +14,5 @@ C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\obj\Debug\net5.0\Week17.Data
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\obj\Debug\net5.0\Week17.Data.dll
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\obj\Debug\net5.0\refint\Week17.Data.dll
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\obj\Debug\net5.0\Week17.Data.pdb
-C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\obj\Debug\net5.0\ref\Week17.Data.dll
-C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\bin\Debug\net5.0\Week17.Data.runtimeconfig.json
-C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\bin\Debug\net5.0\Week17.Data.runtimeconfig.dev.json
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\obj\Debug\net5.0\Week17.Data.genruntimeconfig.cache
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17.Data\obj\Debug\net5.0\ref\Week17.Data.dll

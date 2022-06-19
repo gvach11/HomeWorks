@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week17.Domain", "Week17Doma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week17.Data", "Week17.Data\Week17.Data.csproj", "{B7E646D0-CFA9-4447-822D-9946F89239C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonControllerTest1", "PersonControllerTest1\PersonControllerTest1.csproj", "{4CFA1A7D-04E7-48C2-8704-A43951462AE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonControllerTest", "PersonControllerTest\PersonControllerTest.csproj", "{5B1BEC90-1F32-4131-ACDF-2B7DF959FF3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{B7E646D0-CFA9-4447-822D-9946F89239C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7E646D0-CFA9-4447-822D-9946F89239C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7E646D0-CFA9-4447-822D-9946F89239C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4CFA1A7D-04E7-48C2-8704-A43951462AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CFA1A7D-04E7-48C2-8704-A43951462AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CFA1A7D-04E7-48C2-8704-A43951462AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CFA1A7D-04E7-48C2-8704-A43951462AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B1BEC90-1F32-4131-ACDF-2B7DF959FF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B1BEC90-1F32-4131-ACDF-2B7DF959FF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B1BEC90-1F32-4131-ACDF-2B7DF959FF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B1BEC90-1F32-4131-ACDF-2B7DF959FF3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

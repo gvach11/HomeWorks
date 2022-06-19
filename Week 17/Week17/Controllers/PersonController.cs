@@ -25,6 +25,8 @@ namespace Week17.Controllers
     public class PersonController : Controller
     {
         private readonly PersonContext _context;
+        private IUserService _userService;
+        private readonly AppSettings _appSettings;
         public PersonController(PersonContext context, IUserService userService,
         IOptions<AppSettings> appSettings)
         {
@@ -33,8 +35,6 @@ namespace Week17.Controllers
             _appSettings = appSettings.Value;
         }
 
-        private IUserService _userService;
-        private readonly AppSettings _appSettings;
 
         //Validator start
         public class PersonValidator : AbstractValidator<Person>
@@ -61,16 +61,16 @@ namespace Week17.Controllers
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public IActionResult Login([FromBody] Person userModel)
+        public IActionResult Login(string username, string password)
         {
 
-            var user = _userService.Login(userModel);
+            var user = _userService.Login(username, password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or Password is incorrect" });
             string tokenString = GenerateToken(user);
             var userId = _context.Persons
-                        .Where(x => x.Username == userModel.Username)
+                        .Where(x => x.Username == username)
                         .Select(x => x.Id)
                         .SingleOrDefault();
             var currentrecord = _context.Persons.Find(userId);
@@ -169,13 +169,14 @@ namespace Week17.Controllers
         }
 
         //Filter
+        [AllowAnonymous]
         [HttpGet ("getdatabyparam")]
-        public IQueryable<Object> GetPersonByName([FromQuery] Person person)
+        public IQueryable<Object> GetPersonByName(string name)
         {
 
             return (from p in _context.Persons
                     join a in _context.Addresses on p.Id equals a.PersonId
-                    where p.Firstname == person.Firstname
+                    where p.Firstname == name
                     select new
                     {
                         id = p.Id,

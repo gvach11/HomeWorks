@@ -8,7 +8,7 @@ namespace Week17.Services
 
 	public interface IUserService
 	{
-		Person Login(Person model);
+		Person Login(string username, string password);
 		Person GetById(int id);
 		IEnumerable<Person> GetAll();
 	}
@@ -31,17 +31,17 @@ namespace Week17.Services
             throw new System.NotImplementedException();
         }
 
-        public Person Login(Person loginModel)
+        public Person Login(string username, string password)
 		{
-			if (string.IsNullOrEmpty(loginModel.Username) || string.IsNullOrEmpty(loginModel.Password))
+			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
 				return null;
 
-			var user = _context.Persons.SingleOrDefault(x => x.Username == loginModel.Username);
+			var user = _context.Persons.SingleOrDefault(x => x.Username == username);
 
 			if (user == null)
 				return null;
 
-			if (loginModel.Password != user.Password)
+			if (password != user.Password)
 				return null;
 
 			return user;

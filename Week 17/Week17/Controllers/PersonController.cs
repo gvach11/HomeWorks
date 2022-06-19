@@ -1,33 +1,40 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
 using Week17.Domain;
 using Week17.Data;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Week17.Services;
+using Week17.Helpers;
+using Microsoft.Extensions.Options;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace Week17.Controllers
 {
 
 
-    [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class PersonController : Controller
     {
         private readonly PersonContext _context;
-        public PersonController(PersonContext context)
+        public PersonController(PersonContext context, IUserService userService,
+        IOptions<AppSettings> appSettings)
         {
             _context = context;
+            _userService = userService;
+            _appSettings = appSettings.Value;
         }
 
-        private readonly string _filePath = Directory.GetCurrentDirectory() + "\\Week17.json";
-
+        private IUserService _userService;
+        private readonly AppSettings _appSettings;
 
         //Validator start
         public class PersonValidator : AbstractValidator<Person>
@@ -48,6 +55,53 @@ namespace Week17.Controllers
         }
 
         //Validator End
+
+        //Login
+
+
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] Person userModel)
+        {
+
+            var user = _userService.Login(userModel);
+
+            if (user == null)
+                return BadRequest(new { message = "Username or Password is incorrect" });
+            string tokenString = GenerateToken(user);
+            var userId = _context.Persons
+                        .Where(x => x.Username == userModel.Username)
+                        .Select(x => x.Id)
+                        .SingleOrDefault();
+            var currentrecord = _context.Persons.Find(userId);
+            currentrecord.Token = tokenString;
+            _context.Persons.Update(currentrecord);
+            _context.SaveChanges();
+            
+
+            return Ok();
+
+
+        }
+        private string GenerateToken(Person user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenString = tokenHandler.WriteToken(token);
+            return tokenString;
+        }
+
 
         //Registration
         [HttpPost ("register")]
@@ -88,9 +142,7 @@ namespace Week17.Controllers
                         city = a.City,
                         home_number = a.HomeNumber
                         
-                    }) ; //ამის უფრო მარტივი სინტაქსი არ არსებობს, select * -ის ვარიანტში რომ იყოს
-                         //დაჯოინებული თეიბლიდან? ვერ ვნახე და ხელით მაგიტომ დავწერე :D მარტო პერსონი რო მომქონდა
-                         //ადრესში null-ებს აბრუნებდა.
+                    }) ;
         }
 
         //Reading a certain line
@@ -141,7 +193,7 @@ namespace Week17.Controllers
         }
 
         //Delete
-
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete ("delete/{id}")]
         public async Task<ActionResult<Person>> DeleteById(int id)
         {
@@ -150,6 +202,9 @@ namespace Week17.Controllers
             _context.SaveChanges();
             return Ok(currentRecord);
         }
+
+        //Update
+        [Authorize(Roles = Role.Admin)]
         [HttpPut("update/{id}")]
         public async Task<ActionResult<Person>> UpdateById(int id, string fname)
         {

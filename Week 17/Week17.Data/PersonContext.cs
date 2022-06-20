@@ -5,6 +5,10 @@ namespace Week17.Data
 {
     public class PersonContext : DbContext
     {
+        public PersonContext()
+        {
+        }
+
         public PersonContext(DbContextOptions<PersonContext> options) :
         base(options)
         {

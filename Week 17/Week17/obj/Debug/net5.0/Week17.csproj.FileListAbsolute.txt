@@ -102,3 +102,7 @@ C:\Users\User\Desktop\HomeWorks\Week 17\Week17\obj\Debug\net5.0\refint\Week17.dl
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17\obj\Debug\net5.0\Week17.pdb
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17\obj\Debug\net5.0\Week17.genruntimeconfig.cache
 C:\Users\User\Desktop\HomeWorks\Week 17\Week17\obj\Debug\net5.0\ref\Week17.dll
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17\bin\Debug\net5.0\xunit.abstractions.dll
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17\bin\Debug\net5.0\xunit.assert.dll
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17\bin\Debug\net5.0\xunit.core.dll
+C:\Users\User\Desktop\HomeWorks\Week 17\Week17\bin\Debug\net5.0\xunit.execution.dotnet.dll

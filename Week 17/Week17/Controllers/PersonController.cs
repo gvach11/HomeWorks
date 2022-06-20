@@ -26,13 +26,10 @@ namespace Week17.Controllers
     {
         private readonly PersonContext _context;
         private IUserService _userService;
-        private readonly AppSettings _appSettings;
-        public PersonController(PersonContext context, IUserService userService,
-        IOptions<AppSettings> appSettings)
+        public PersonController(PersonContext context, IUserService userService)
         {
             _context = context;
             _userService = userService;
-            _appSettings = appSettings.Value;
         }
 
 
@@ -68,7 +65,7 @@ namespace Week17.Controllers
 
             if (user == null)
                 return BadRequest(new { message = "Username or Password is incorrect" });
-            string tokenString = GenerateToken(user);
+            string tokenString = _userService.GenerateToken(user);
             var userId = _context.Persons
                         .Where(x => x.Username == username)
                         .Select(x => x.Id)
@@ -83,24 +80,7 @@ namespace Week17.Controllers
 
 
         }
-        private string GenerateToken(Person user)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-            return tokenString;
-        }
+
 
 
         //Registration

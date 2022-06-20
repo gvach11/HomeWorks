@@ -22,26 +22,42 @@ namespace Week17_tests
         {
             _service = new UserServiceFake();
             _context = new PersonContext();
-            _controller = new PersonController(_context, _service, (IOptions<AppSettings>)_appSettings);//მოკლედ ეს ვერ
-                                                                                //გავასწორე, Null reference -ზე გადის
-                                                                                //და ვერ ვუქენი ვერაფერი, რანაირად გადავცე
-                                                                                //ეგ პარამეტრი ისე რო იმუშაოს ვერ გავიგე,
-                                                                                //რა აღარ ვცადე :D  ვერ ვტესტავ დანარჩენ
-                                                                                //კოდსაც ამის გამო.
+            _controller = new PersonController(_context, _service);
         }
+
+        Person testPerson = new Person()
+        {
+            Id = 1,
+            Firstname = "Test",
+            Lastname = "Test",
+            JobPosition = "Test",
+            Salary = 100,
+            WorkExperince = 10,
+            CreateDate = System.DateTime.Now,
+            Password = "test1",
+            Username = "test1",
+            PersonAddress = new Address
+            {
+                City = "test",
+                Country = "test",
+                HomeNumber = 10
+            }
+        };
 
         [Fact]
         public void LoginTest()
         {
+            
+            
             //arrange
             string x = "test1";
             string y = "test1";
 
             //act
-            var okresult = _controller.Login(x, y);
+            var okresult = _service.Login(x, y).Id == testPerson.Id;
 
             //assert
-            Assert.IsType<OkResult>(okresult);
+            Assert.True(okresult);
         }
 
         [Fact]
@@ -51,11 +67,11 @@ namespace Week17_tests
             var id = 1;
 
             //act
-            var result = _controller.GetPersonById(id);
+            var result = _service.GetById(id).Id==testPerson.Id;
            
 
             //assert
-            Assert.IsType<OkResult>(result);
+            Assert.True(result);
         }
         [Fact]
         public void RegistrationTest()

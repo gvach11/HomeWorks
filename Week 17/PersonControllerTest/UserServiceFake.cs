@@ -3,6 +3,8 @@ using System.Linq;
 using Week17.Data;
 using Week17.Domain;
 using Week17.Services;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Week17_tests
 {
@@ -18,7 +20,7 @@ namespace Week17_tests
             {
                 new Person() { Id = 1,
                     Firstname = "Test", Lastname="Test", JobPosition = "Test", Salary = 100, WorkExperince = 10, 
-                    CreateDate = System.DateTime.Now, Password = "test1", Username = "test1", 
+                    CreateDate = System.DateTime.Now.Date, Password = "test1", Username = "test1", 
                     PersonAddress = new Address{
                                             City = "test",
                                             Country = "test",
@@ -26,7 +28,7 @@ namespace Week17_tests
                     Role = "Admin", Token = null},
                                 new Person() { Id = 2,
                     Firstname = "Test", Lastname="Test", JobPosition = "Test", Salary = 100, WorkExperince = 10,
-                    CreateDate = System.DateTime.Now, Password = "test1", Username = "test2",
+                    CreateDate = System.DateTime.Now.Date, Password = "test1", Username = "test2",
                     PersonAddress = new Address{
                                             City = "test",
                                             Country = "test",
@@ -34,7 +36,7 @@ namespace Week17_tests
                     Role = "User", Token = null},
                                                 new Person() { Id = 3,
                     Firstname = "Test", Lastname="Test", JobPosition = "Test", Salary = 100, WorkExperince = 10,
-                    CreateDate = System.DateTime.Now, Password = "test1", Username = "test3",
+                    CreateDate = System.DateTime.Now.Date, Password = "test1", Username = "test3",
                     PersonAddress = new Address{
                                             City = "test",
                                             Country = "test",
@@ -45,6 +47,11 @@ namespace Week17_tests
             };
         }
 
+        public string GenerateToken(Person User)
+        {
+            return "fake token";
+        }
+
         public IEnumerable<Person> GetAll()
         {
             return _persons;
@@ -52,7 +59,8 @@ namespace Week17_tests
 
         public Person GetById(int id)
         {
-            return _persons[id];
+            var person = _persons.Find(x => x.Id == id);
+            return person;
         }
 
         public Person Login(string username, string password)
